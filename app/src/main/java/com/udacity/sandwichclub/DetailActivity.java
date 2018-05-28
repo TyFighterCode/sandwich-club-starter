@@ -20,12 +20,10 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
-    //ImageView sandwichPic;
     TextView sandwichDescription;
     TextView sandwichIngredients;
     TextView sandwichKnownAs;
     TextView sandwichOrigin;
-    //String val = TextUtils.join(", ", listObj);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,18 +74,8 @@ public class DetailActivity extends AppCompatActivity {
         sandwichOrigin = findViewById(R.id.origin_tv);
 
         sandwichDescription.setText(sandwich.getDescription());
-        sandwichOrigin.setText(sandwich.getPlaceOfOrigin());
-
-        sandwichDescription.setText(sandwich.getDescription());
         sandwichIngredients.setText(TextUtils.join(" ,",(sandwich.getIngredients())));
         sandwichKnownAs.setText(TextUtils.join(" ,",(sandwich.getAlsoKnownAs())));
         sandwichOrigin.setText(sandwich.getPlaceOfOrigin());
-
-       sandwichDescription.setVisibility(View.VISIBLE);
-       sandwichIngredients.setVisibility(View.VISIBLE);
-       sandwichKnownAs.setVisibility(View.VISIBLE);
-        sandwichOrigin.setVisibility(View.VISIBLE);
-
- }
-
+        }
 }

@@ -16,24 +16,16 @@ public class JsonUtils {
 
     public static Sandwich parseSandwichJson(String json) {
 
-        //final String SAND_DESCRIPTION = "sandDescriptions";
-        //final String SAND_INGREDIENTS = "sandIngredients";
-        //final String SAND_KNOWNAS = "sandKnownAS";
-        //final String SAND_ORIGIN = "sandOrigins";
-        //final String SAND_PIC = "sandPicture";
-        //String[] parsedWeatherData = null;
+        try {
         String sandwichName;
         String sandOrigin;
         String sandDescription;
         String sandPic;
 
-
-        try {
-            //creating objects to use for json data
             JSONObject sandwichJsonObject = new JSONObject(json);
-            sandwichName = sandwichJsonObject.getString("name");
-            //String sandwichJsonName = parseSandwichJson(sandwichName);
-            JSONArray anotherName = sandwichJsonObject.getJSONArray("knownAs");
+            JSONObject sandwichNameObj = sandwichJsonObject.getJSONObject("name");
+            sandwichName = sandwichNameObj.getString("mainName");
+            JSONArray anotherName = sandwichNameObj.getJSONArray("alsoKnownAs");
             JSONArray sandIngredients = sandwichJsonObject.getJSONArray("ingredients");
 
 
@@ -46,9 +38,10 @@ public class JsonUtils {
                 ingredientsList.add(sandIngredients.getString(i));
             }
 
-            sandOrigin = sandwichJsonObject.getString("sandOrigin");
-            sandDescription = sandwichJsonObject.getString("sandDescription");
-            sandPic = sandwichJsonObject.getString("sandPic");
+            sandOrigin = sandwichJsonObject.getString("placeOfOrigin");
+            sandDescription = sandwichJsonObject.getString("description");
+            sandPic = sandwichJsonObject.getString("image");
+
 //     public Sandwich(String mainName, List<String> alsoKnownAs, String placeOfOrigin, String description, String image, List<String> ingredients) {
             return new Sandwich(sandwichName, anotherNamesList, sandOrigin, sandDescription, sandPic, ingredientsList);
 
