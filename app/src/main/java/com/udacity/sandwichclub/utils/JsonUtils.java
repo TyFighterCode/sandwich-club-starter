@@ -28,7 +28,6 @@ public class JsonUtils {
             JSONArray anotherName = sandwichNameObj.getJSONArray("alsoKnownAs");
             JSONArray sandIngredients = sandwichJsonObject.getJSONArray("ingredients");
 
-
             ArrayList<String> anotherNamesList = new ArrayList<>();
             for (int i = 0; i < anotherName.length(); i++) {
                 anotherNamesList.add(anotherName.getString(i));
